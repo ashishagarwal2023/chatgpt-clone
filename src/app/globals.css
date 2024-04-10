@@ -13,3 +13,9 @@ img, svg{
 .markdown ul{
     list-style: initial;
 }
+
+.markdown a{
+    color: #0070f3;
+    text-decoration: none;
+    border-bottom:1px solid #0070f3;
+}
