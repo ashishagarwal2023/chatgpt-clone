@@ -3,6 +3,10 @@
 import Image from "next/image";
 import { useState } from "react";
 
+// HTML/Markdown Rendering
+import { remark } from "remark";
+import html from "remark-html";
+
 // NavBar
 import { NavBar } from "./NavBar.jsx";
 
@@ -23,7 +27,8 @@ export const Chat = () => {
       setNewMessage("");
       setGenerating(true);
       let gptRes = await window.gpt.ask(newMessage);
-      setMessages([...updatedMessages, { isUser: false, response: gptRes }]);
+      const htmlRen = (await remark().use(html).process(gptRes)).value;
+      setMessages([...updatedMessages, { isUser: false, response: htmlRen }]);
       setGenerating(false);
     }
   };
@@ -45,27 +50,35 @@ export const Chat = () => {
 
       <main className="p-2 px-4">
         {messages.length === 0 ? (
-            <div className="no-scrollbar mt-16 pb-12 overflow-hidden ">
-          <div className="flex flex-row justify-center">
-            <Image
-              src="./img/gpt.svg"
-              alt="ChatGPT"
-              width={50}
-              className="rounded-full p-1 text-white bg-black border shadow-md shadow-white inline-flex invert"
-              height={50}
-            />
-          </div>
-          <h2 className="mt-4 text-2xl font-semibold text-center">How can I help you today?</h2>
-          <p className="mt-2 text-center text-base">Built by Ashish Agarwal, based on FreeGPT.js with Next.js.</p>
-          <p className="mt-2 text-center text-base">FreeGPT also depends on ChatGPT 3.5 Turbo.</p>
-          <p className="mt-0 text-center text-base">Visit GitHub (top left) for more info.</p>
+          <div className="no-scrollbar mt-16 pb-12 overflow-hidden ">
+            <div className="flex flex-row justify-center">
+              <Image
+                src="/img/gpt.svg"
+                alt="ChatGPT"
+                width={50}
+                className="rounded-full p-1 text-white bg-black border shadow-md shadow-white inline-flex invert"
+                height={50}
+              />
+            </div>
+            <h2 className="mt-4 text-2xl font-semibold text-center">
+              How can I help you today?
+            </h2>
+            <p className="mt-2 text-center text-base">
+              Built by Ashish Agarwal, based on FreeGPT.js with Next.js.
+            </p>
+            <p className="mt-2 text-center text-base">
+              FreeGPT also depends on ChatGPT 3.5 Turbo.
+            </p>
+            <p className="mt-0 text-center text-base">
+              Visit GitHub (top left) for more info.
+            </p>
           </div>
         ) : (
           messages.map((msg, index) => (
             <div key={index} className="mt-4">
               {msg.isUser ? (
                 <Image
-                  src="./img/user.png"
+                  src="/img/user.png"
                   alt="User"
                   width={25}
                   height={25}
@@ -73,18 +86,27 @@ export const Chat = () => {
                 />
               ) : (
                 <Image
-                  src="./img/gpt.svg"
-                  alt="ChatGPT"
+                  src="/img/gpt.svg"
+                  alt="FreeGPT"
                   width={25}
-                  className="rounded-full p-1 text-white bg-[#19c37d] inline-flex"
+                  className="rounded-full p-1 text-white bg-[#19afc3] inline-flex"
                   height={25}
                 />
               )}
               <div className="px-2 font-semibold inline-flex text-[#0d0d0d]">
-                {msg.isUser ? "You" : "ChatGPT"}
+                {msg.isUser ? "You" : "FreeGPT"}
               </div>
               <div className="flex px-[34px]">
-                <p className="text-[#0d0d0d] max-w-xl md:max-w-full">{msg.response}</p>
+                {msg.isUser ? (
+                  <p className="max-w-xl md:max-w-full text-[#0d0d0d]">
+                    {msg.response}
+                </p>
+                ) : (
+                  <div
+                  className="max-w-xl md:max-w-full text-[#0d0d0d] markdown"
+                  dangerouslySetInnerHTML={{ __html: msg.response }}
+                ></div>
+                )}                
               </div>
             </div>
           ))
