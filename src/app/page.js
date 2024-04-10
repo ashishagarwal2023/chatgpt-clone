@@ -1,5 +1,3 @@
-// Literally everything is rendered from Chat, because NavBar's clear button needs to get access to chat.
-
 // import { NavBar } from "./components/NavBar";
 import { Chat } from "./components/Chat";
 // import Image from "next/image";
