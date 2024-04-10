@@ -7,30 +7,12 @@ import { useState } from "react";
 import { NavBar } from "./NavBar.jsx";
 
 export const Chat = () => {
-  const [messages, setMessages] = useState([
-    {
-      isUser: true,
-      response: "What is Google?",
-    },
-    {
-      isUser: false,
-      response:
-        "Google is a multinational technology company primarily known for its internet-related services and products. It was founded in 1998 by Larry Page and Sergey Brin while they were Ph.D. students at Stanford University in California. The company's mission is to organize the world's information and make it universally accessible and useful.",
-    },
-    {
-      isUser: true,
-      response: "Hello, what is this?",
-    },
-    {
-      isUser: false,
-      response: "ChatGPT UI Clone in Next.js!",
-    },
-  ]);
+  const [messages, setMessages] = useState([]);
 
   const [newMessage, setNewMessage] = useState("");
   const [generating, setGenerating] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (newMessage.trim() !== "" && !generating) {
       const updatedMessages = [
@@ -40,16 +22,14 @@ export const Chat = () => {
       setMessages(updatedMessages);
       setNewMessage("");
       setGenerating(true);
-      setTimeout(() => setGenerating(false), 1000);
+      let gptRes = await window.gpt.ask(newMessage);
+      setMessages([...updatedMessages, { isUser: false, response: gptRes }]);
+      setGenerating(false);
     }
   };
 
   const handleClear = () => {
     setMessages([]);
-  };
-
-  const handleClose = () => {
-    alert("What will you do?\n\nPro tip: change this icon to a bars icon and add conversations!");
   };
 
   const handleKeyDown = (e) => {
@@ -61,11 +41,11 @@ export const Chat = () => {
 
   return (
     <>
-      <NavBar handleClear={handleClear} handleClose={handleClose} />
+      <NavBar handleClear={handleClear} />
 
       <main className="p-2 px-4">
         {messages.length === 0 ? (
-            <div className="mt-16 p b-32">
+            <div className="no-scrollbar mt-16 pb-12 overflow-hidden ">
           <div className="flex flex-row justify-center">
             <Image
               src="/img/gpt.svg"
@@ -76,7 +56,9 @@ export const Chat = () => {
             />
           </div>
           <h2 className="mt-4 text-2xl font-semibold text-center">How can I help you today?</h2>
-          <p className="mt-2 text-center text-base">Built by Ashish Agarwal, based on FreeGPT.js with Next.js</p>
+          <p className="mt-2 text-center text-base">Built by Ashish Agarwal, based on FreeGPT.js with Next.js.</p>
+          <p className="mt-2 text-center text-base">FreeGPT also depends on ChatGPT 3.5 Turbo.</p>
+          <p className="mt-0 text-center text-base">Visit GitHub (top left) for more info.</p>
           </div>
         ) : (
           messages.map((msg, index) => (
@@ -102,7 +84,7 @@ export const Chat = () => {
                 {msg.isUser ? "You" : "ChatGPT"}
               </div>
               <div className="flex px-[34px]">
-                <p className="text-[#0d0d0d]">{msg.response}</p>
+                <p className="text-[#0d0d0d] max-w-xl md:max-w-full">{msg.response}</p>
               </div>
             </div>
           ))
