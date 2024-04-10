@@ -53,7 +53,7 @@ export const Chat = () => {
           <div className="no-scrollbar mt-16 pb-12 overflow-hidden ">
             <div className="flex flex-row justify-center">
               <Image
-                src="/img/gpt.svg"
+                src="./img/gpt.svg"
                 alt="ChatGPT"
                 width={50}
                 className="rounded-full p-1 text-white bg-black border shadow-md shadow-white inline-flex invert"
@@ -78,7 +78,7 @@ export const Chat = () => {
             <div key={index} className="mt-4">
               {msg.isUser ? (
                 <Image
-                  src="/img/user.png"
+                  src="./img/user.png"
                   alt="User"
                   width={25}
                   height={25}
@@ -86,7 +86,7 @@ export const Chat = () => {
                 />
               ) : (
                 <Image
-                  src="/img/gpt.svg"
+                  src="./img/gpt.svg"
                   alt="FreeGPT"
                   width={25}
                   className="rounded-full p-1 text-white bg-[#19afc3] inline-flex"
