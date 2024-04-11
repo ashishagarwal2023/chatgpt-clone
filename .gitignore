@@ -40,3 +40,7 @@ package-lock.json
 
 next.config.mjs
 # ignoring nextconfig cuz of local and prodc
+
+android
+ios
+capacitor.config.json
