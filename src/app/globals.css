@@ -19,3 +19,35 @@ img, svg{
     text-decoration: none;
     border-bottom:1px solid #0070f3;
 }
+
+.markdown p{
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+.markdown pre{
+    background: #e7e7e7;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-bottom: 15px;   
+}
+.markdown code{
+    background: #e7e7e7;
+    padding: 5px;
+    border-radius: 5px;
+}
+@media(prefers-color-scheme: dark){
+    .markdown code {
+        background: #333333;
+        padding: 5px;
+        border-radius: 5px;
+    }
+    .markdown pre {
+        background: #333333;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+}

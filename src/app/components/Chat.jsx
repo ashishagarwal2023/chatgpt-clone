@@ -1,4 +1,4 @@
-"use client";
+  "use client";
 
 // Images
 import user from "/public/img/user.png";
@@ -52,7 +52,7 @@ export const Chat = () => {
     <>
       <NavBar handleClear={handleClear} />
 
-      <main className="p-2 px-4">
+      <main className="p-2 px-4 dark:text-[#ececec] dark:bg-[#212121]">
         {messages.length === 0 ? (
           <div className="no-scrollbar mt-16 pb-12 overflow-hidden ">
             <div className="flex flex-row justify-center">
@@ -60,7 +60,7 @@ export const Chat = () => {
                 src={gpt}
                 alt="ChatGPT"
                 width={50}
-                className="rounded-full p-1 text-white bg-black border shadow-md shadow-white inline-flex invert"
+                className="rounded-full p-1 text-[#0d0d0d] bg-black border shadow-sm shadow-white inline-flex invert"
                 height={50}
               />
             </div>
@@ -97,17 +97,17 @@ export const Chat = () => {
                   height={25}
                 />
               )}
-              <div className="px-2 font-semibold inline-flex text-[#0d0d0d]">
+              <div className="px-2 font-semibold inline-flex text-[#0d0d0d] dark:text-gray-200">
                 {msg.isUser ? "You" : "FreeGPT"}
               </div>
               <div className="flex px-[34px]">
                 {msg.isUser ? (
-                  <p className="max-w-xl md:max-w-full text-[#0d0d0d]">
+                  <p className="max-w-xl md:max-w-full text-[#0d0d0d] dark:text-gray-100">
                     {msg.response}
                 </p>
                 ) : (
                   <div
-                  className="max-w-xl md:max-w-full text-[#0d0d0d] markdown"
+                  className="max-w-xl md:max-w-full text-[#0d0d0d] markdown dark:text-gray-100"
                   dangerouslySetInnerHTML={{ __html: msg.response }}
                 ></div>
                 )}                
@@ -116,11 +116,11 @@ export const Chat = () => {
           ))
         )}
         <div className="mt-28 bottom-0 sticky w-full bg-transparent p-0 m-0">
-          <div className="px-0 py-2 items-center text-center text-[#676767] bg-white text-xs">
+          <div className="px-0 py-2 items-center text-center text-[#676767] bg-white text-xs dark:bg-[#212121] dark:text-[#b4b4b4]">
             <form onSubmit={handleSubmit}>
               <textarea
                 rows="1"
-                className="bg-white border-[#9b9b9b] border text-base w-full focus:outline-none p-4 rounded-lg"
+                className="bg-white border-[#9b9b9b] border text-base w-full focus:outline-none p-4 rounded-lg dark:bg-[#212121] dark:border-[#9b9b9b]"
                 placeholder="Message GPT, enter to send"
                 value={newMessage}
                 onChange={(e) => setNewMessage(e.target.value)}
@@ -134,7 +134,7 @@ export const Chat = () => {
             <p>
               Enter or click to{" "}
               <span
-                className="text-blue-700 cursor-pointer text-sm"
+                className="text-blue-700 cursor-pointer text-sm dark:text-blue-400"
                 onClick={handleSubmit}
               >
                 Send Message
