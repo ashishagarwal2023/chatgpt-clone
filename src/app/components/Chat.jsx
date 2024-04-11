@@ -71,7 +71,7 @@ export const Chat = () => {
               Built by Ashish Agarwal, based on FreeGPT.js with Next.js.
             </p>
             <p className="mt-2 text-center text-base">
-              FreeGPT also depends on ChatGPT 3.5 Turbo.
+              FreeGPT also depends on ChatGPT 3.5 Turbo. FreeGPT or this project is not affilated with ChatGPT.
             </p>
             <p className="mt-0 text-center text-base">
               Visit GitHub (top left) for more info.
