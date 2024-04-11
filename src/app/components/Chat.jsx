@@ -9,7 +9,7 @@ import { useState } from "react";
 
 // HTML/Markdown Rendering
 import { remark } from "remark";
-import {html} from "remark-html";
+import html from "remark-html";
 
 // NavBar
 import { NavBar } from "./NavBar.jsx";
