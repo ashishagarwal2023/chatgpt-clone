@@ -5,7 +5,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "FreeGPT",
-  description: "Full-stack ChatGPT Clone. Powered by FreeGPT.js and Next.js. Built by Ashish Agarwal.",
+  description: "Full-stack ChatGPT UI Clone. Powered by FreeGPT.js and Next.js.",
 };
 
 export default function RootLayout({ children }) {

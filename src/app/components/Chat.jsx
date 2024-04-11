@@ -92,14 +92,14 @@ export const Chat = () => {
               ) : (
                 <Image
                   src={gpt}
-                  alt="FreeGPT"
+                  alt="ChatGPT"
                   width={25}
                   className="rounded-full p-1 text-white bg-[#19c37d] inline-flex"
                   height={25}
                 />
               )}
               <div className="px-2 font-semibold inline-flex text-[#0d0d0d] dark:text-gray-200">
-                {msg.isUser ? "You" : "FreeGPT"}
+                {msg.isUser ? "You" : "ChatGPT"}
               </div>
               <div className="flex px-[34px]">
                 {msg.isUser ? (
