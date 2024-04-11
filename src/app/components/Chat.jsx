@@ -71,7 +71,8 @@ export const Chat = () => {
               Built by Ashish Agarwal, based on FreeGPT.js with Next.js.
             </p>
             <p className="mt-2 text-center text-base">
-              FreeGPT also depends on ChatGPT 3.5 Turbo. FreeGPT or this project is not affilated with ChatGPT.
+              FreeGPT also depends on ChatGPT 3.5 Turbo. FreeGPT or this project
+              is not affilated with ChatGPT.
             </p>
             <p className="mt-0 text-center text-base">
               Visit GitHub (top left) for more info.
@@ -93,7 +94,7 @@ export const Chat = () => {
                   src={gpt}
                   alt="FreeGPT"
                   width={25}
-                  className="rounded-full p-1 text-white bg-[#19afc3] inline-flex"
+                  className="rounded-full p-1 text-white bg-[#19c37d] inline-flex"
                   height={25}
                 />
               )}
@@ -104,13 +105,13 @@ export const Chat = () => {
                 {msg.isUser ? (
                   <p className="max-w-xl md:max-w-full text-[#0d0d0d] dark:text-gray-100">
                     {msg.response}
-                </p>
+                  </p>
                 ) : (
                   <div
-                  className="max-w-xl md:max-w-full text-[#0d0d0d] markdown dark:text-gray-100"
-                  dangerouslySetInnerHTML={{ __html: msg.response }}
-                ></div>
-                )}                
+                    className="max-w-xl md:max-w-full text-[#0d0d0d] markdown dark:text-gray-100"
+                    dangerouslySetInnerHTML={{ __html: msg.response }}
+                  ></div>
+                )}
               </div>
             </div>
           ))
