@@ -1,4 +1,4 @@
-  "use client";
+"use client";
 
 // Images
 import user from "/public/img/user.png";
